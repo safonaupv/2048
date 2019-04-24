@@ -9,18 +9,39 @@
 import Foundation
 import UIKit
 
-class Square: UILabel {
-    var x: Int, y: Int, width: Int, height: Int, color: UIColor, value: String
+class Square{
+    var label = UILabel()
+    var labelPosX: Int{
+        get{
+            return Int(label.frame.origin.x)
+        }
+        set {
+            label.frame.origin.x = CGFloat(newValue)
+        }
+    }
+    var labelPosY: Int{
+        get{
+            return Int(label.frame.origin.y)
+        }
+        set {
+            label.frame.origin.y = CGFloat(newValue)
+        }
+    }
     
-    init(x: Int, y: Int, width: Int, height: Int, color: UIColor, value: String) {
-        
-        self.backgroundColor = color
-        self.text = value
-        self.textAlignment = .center
-        self.font = UIFont(name: "Helvetica", size: 40)
+    let index: (Int, Int)
+    
+    init(index: (Int,Int), x: Int, y: Int, width: Int, height: Int, color: UIColor, value: String) {
+        label = UILabel(frame: CGRect(x: x, y: y, width: width, height: height))
+        label.backgroundColor = color
+        label.text = value
+        label.textAlignment = .center
+        label.font = UIFont(name: "Helvetica", size: 40)
+        self.index = index
     }
-    override init (frame: CGRect){}
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+    
+    init(index: (Int,Int)){
+        self.index = index
     }
+    
+    
 }

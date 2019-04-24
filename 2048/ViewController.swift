@@ -12,12 +12,13 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        var digitLabel = UILabel(frame: CGRect(x: 40, y: 390, width: 80, height: 80))
-        digitLabel.backgroundColor = UIColor.yellow
-        digitLabel.text = "2"
-        digitLabel.textAlignment = .center
-        digitLabel.font = UIFont(name: "Helvetica", size: 40)
-        self.view.addSubview(digitLabel)
+        var digits: Array<Square> = [Square(x: 40, y: 390, width: 80, height: 80, color: UIColor.yellow, value: "2")]
+        self.view.addSubview(digits[0].label)
+        digits.append(Square(x: 125, y: 390, width: 80, height: 80, color: UIColor.yellow, value: "2"))
+        self.view.addSubview(digits[1].label)
+        UIView.animate(withDuration: 2, animations: {
+            digits[0].labelPosX += 125
+            })
         //UISwipeGestureRecognizer.Direction.right
         // Do any additional setup after loading the view.
     }
